@@ -1,20 +1,28 @@
 Ron D Bentley (UK)
 # Arduino-Asnchronous REM_SYS-Timed-Reminders
-A framework supporting the creation and processing of elapsed and real-time reminder alerting asynchronously
 
-From the REM_SY User Guide:
+REM_SYS – asynchronous elapsed & real-time reminder alerting
 
-Introduction
-This guide provides a quick and ready reference to understand and implement the REM_SYS framework for designing and building Arduino microcontroller applications based on the concept of asynchronous elapsed and real-time reminder alerting.  
+Have you a need to develop Arduino applications that are based on time? For example, performing certain operations and tests at specific times of the day, repeating other actions at fixed intervals as a one off activity, a recurring activity or just for a fixed duration? If so, then perhaps REM_SYS is well worth considering as the basis within which to develop your applications
 
-That is, if you have a need for date/time based processing, either as elapsed time or real-world real-time, then REM_SYS is well worth a look.  REM_SYS can provide a different approach and thinking about application design and is well suited to multi-tasking solutions. 
-The framework has been derived from an earlier version  that dealt exclusively with elapsed time reminders (ETRs).  In this version, real-time reminder functionality has been added to the earlier ETR framework, providing a comprehensive suite of capabilities for supporting applications that require asynchronous alerting over periods of time (elapsed and real-time).
+With the REM_SYS framework you are able to plug in your code and programmatically define and create reminders that will alert a) at specific times of the day, b) specific days of the week/month, or c) at fixed intervals. Furthermore, when defining reminders, end users are able to add their own parameters for return at the time of alerting for subsequent decision support and program flow.
 
-The REM_SYS framework is built around the concept of defining reminder entities (which can be either of type elapsed or real-time) which are processed and handled asynchronously, leaving main line code to do ..... whatever it needs to do.  
+REM_SYS supports two ‘flavours’ of reminder – elapsed time & real-time:
 
-Reminder alerts (ETRs/RTRs) can be considered to be analogous to interrupts, albeit they are produced at defined points in time.   Reminder alerts will be processed as a part of the main code loop and can provide comprehensive features that offer the designer a good deal of freedom in decision support and control.  The beauty of the framework is that it supports multiple ET and RT reminders concurrently, up to the number defined as part of framework configuration.
+1. Elapsed time reminders (ETRs) operate without any awareness of real world real-time, rather like a stop watch – switched on and stopped at some point after a given time has elapsed.
+2. Real-time reminders (RTRs) operate with full awareness of real world real-time, linked to a hardware Real Time Clock (RTC). For example, if you want an alert at 21:45 hours each day, then RTRs can support this.
 
-In producing this guide, an attempt to balance brevity and the degree of technical detail required to successfully implement the REM_SYS framework has been sought. Hopefully, the reader will find this balance struck?
+ETRs and RTRs can each be specified as one of three different types:
+1. One off alert - only one alert will be generated at the given time, or
+2. Recurring alert - alerts will be generated indefinitely after the start time of the first alert, or
+3. Recurring with duration alert - alerts will be generated as for the recurring type, but will cease after the specified duration period.
+
+REM_SYS is able to support multiple and concurrent reminders of either type and is fully configurable to meet a wide range of needs.
+In addition to functions to create each type of reminder, the framework also provides functionality to manage reminders, service reminder alerts and manipulate dates.
+
+The REM_SYS User Guide provides a comprehensive appreciation of the capabilities of the framework.
+Have a look!
+
 
 
  
