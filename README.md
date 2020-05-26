@@ -1,7 +1,6 @@
 Ron D Bentley (UK)
-# Arduino-Asnchronous REM_SYS-Timed-Reminders
 
-REM_SYS – asynchronous elapsed & real-time reminder alerting
+# REM_SYS – asynchronous elapsed & real-time reminder alerting
 
 Have you a need to develop Arduino applications that are based on time? For example, performing certain operations and tests at specific times of the day, repeating other actions at fixed intervals as a one off activity, a recurring activity or just for a fixed duration? If so, then perhaps REM_SYS is well worth considering as the basis within which to develop your applications
 
