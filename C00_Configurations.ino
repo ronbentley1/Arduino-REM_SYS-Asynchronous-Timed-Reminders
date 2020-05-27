@@ -12,7 +12,7 @@ int ETR_timer_number                   = 0;   // 0 for timer0, 2 for timer2
 //  The timer_drift_adjustment variable allows the inaccuracy of timer0/2 to be
 //  compensated for, but only as far as the drift per hour in seconds.
 //  This is ONLY relevant for ETRs, see User Guide.
-long signed int timer_drift_adjustment = 1;  // number of seconds (+/-) per hour to adjust elapsed times
+long signed int timer_drift_adjustment =  1;  // number of seconds (+/-) per hour to adjust elapsed times
 
 #define max_RQ_free_chain_blocks          16  // size of the RQ free chain in blocks
 

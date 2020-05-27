@@ -178,15 +178,15 @@ int RTR_Processor() {
 //      It is 0..'scans_per_sec'-1.  'scans_per_sec' is 'timer1_freq' / 'ETR_R_list_scan_freq'.
 //
 int create_ET_reminder(int R_type, int R_subtype,
-                       long unsigned int R_start_in_hrs,   long unsigned int R_start_in_mins,
-                       long unsigned int R_start_in_secs,  long unsigned int R_start_in_subsecs,
-                       long unsigned int R_freq_hrs,       long unsigned int R_freq_mins,
-                       long unsigned int R_freq_secs,      long unsigned int R_freq_subsecs,
-                       long unsigned int R_duration_hrs,   long unsigned int R_duration_mins,
-                       long unsigned int R_duration_secs,  long unsigned int R_duration_subsecs,
+                       long signed int R_start_in_hrs,   long signed int R_start_in_mins,
+                       long signed int R_start_in_secs,  long signed int R_start_in_subsecs,
+                       long signed int R_freq_hrs,       long signed int R_freq_mins,
+                       long signed int R_freq_secs,      long signed int R_freq_subsecs,
+                       long signed int R_duration_hrs,   long signed int R_duration_mins,
+                       long signed int R_duration_secs,  long signed int R_duration_subsecs,
                        int R_user1, int R_user2, int R_user3, int R_user4) {
   int R_entry, R_list_status;
-  long unsigned int R_start_in, R_freq, R_duration;
+  long signed int R_start_in, R_freq, R_duration;
   //  start by validating the parameters
   if (R_type < ET_oneoff_type || R_type > ET_repeat_duration_type) {
     return invalid_R_type;
@@ -218,6 +218,7 @@ int create_ET_reminder(int R_type, int R_subtype,
       return invalid_freq_subsecs;
     }
     R_freq_secs = R_freq_secs + timer_drift_adjustment * R_freq_hrs; // add the number of secs per hour adjustment
+
     R_freq =  R_freq_hrs   * scans_per_hr  +
               R_freq_mins  * scans_per_min +
               R_freq_secs  * scans_per_sec +
@@ -307,15 +308,15 @@ int create_ET_reminder(int R_type, int R_subtype,
 //      hrs, mins, secs (no subsecs)
 //
 int create_RT_reminder(int R_type, int R_subtype,
-                       long unsigned int R_remind_at_hrs,   long unsigned int R_remind_at_mins,
-                       long unsigned int R_remind_at_secs,
-                       long unsigned int R_freq_hrs,       long unsigned int R_freq_mins,
-                       long unsigned int R_freq_secs,
-                       long unsigned int R_duration_hrs,   long unsigned int R_duration_mins,
-                       long unsigned int R_duration_secs,
+                       long signed int R_remind_at_hrs,  long signed int R_remind_at_mins,
+                       long signed int R_remind_at_secs,
+                       long signed int R_freq_hrs,       long signed int R_freq_mins,
+                       long signed int R_freq_secs,
+                       long signed int R_duration_hrs,   long signed int R_duration_mins,
+                       long signed int R_duration_secs,
                        int R_user1, int R_user2, int R_user3, int R_user4) {
   int R_entry;
-  long unsigned int R_remind_at, R_freq, R_duration;
+  long signed int R_remind_at, R_freq, R_duration;
   //  start by validating the parameters
   if (R_type < RT_oneoff_type || R_type > RT_repeat_duration_type) {
     return invalid_R_type;
