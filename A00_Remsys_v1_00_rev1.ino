@@ -1,4 +1,4 @@
-/*   version 1.00, Ron D Bentley (Stafford UK) March 2020.
+/*   version 1.00 rev 1, Ron D Bentley (Stafford UK) March 2020.
 
 This framework provides a basis for the development of applications that would benefit from timed 
 reminder alerting.  Timed reminder alerts can be defined/created as elapsed time reminders (ETRs)or
