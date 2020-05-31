@@ -44,7 +44,6 @@ void loop() {
         // insert ETR/RTR alert switch case code handling here:
 
 
-
         // default switch value 'catcher'
         default:
           Serial.print("!Spurious switch value=");

@@ -88,13 +88,12 @@ void initialise_timer2() {
 ISR(TIMER0_COMPA_vect) {
   static int timer0_tick = 0;   // counts out the defined R_list scan frequency for ETRs.
   if (!reminders_suspended)
-  {
+  { timer0_tick++;
     if (timer0_tick == ETR_R_list_scan_freq) {
       timer0_tick = 0;          // reset for next timer1 interrupt
       // scan ETR entries in reminder list
       scan_R_list(ETR);
     }
-    else timer0_tick++;
   }
 }
 
@@ -122,13 +121,12 @@ ISR(TIMER1_COMPA_vect) {
 ISR(TIMER2_COMPA_vect) {
   static int timer2_tick = 0;   // counts out the defined R_list scan frequency for ETRs.
   if (!reminders_suspended)
-  {
+  { timer2_tick++;
     if (timer2_tick == ETR_R_list_scan_freq) {
       timer2_tick = 0;          // reset for next timer1 interrupt
       // scan ETR entries in reminder list
       scan_R_list(ETR);
     }
-    else timer2_tick++;
   }
 }
 
