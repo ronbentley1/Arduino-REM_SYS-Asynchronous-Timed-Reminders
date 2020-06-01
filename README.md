@@ -20,8 +20,8 @@ REM_SYS is able to support multiple and concurrent reminders of either type and 
 In addition to functions to create each type of reminder, the framework also provides functionality to manage reminders, service reminder alerts and manipulate dates.
 
 The REM_SYS User Guide provides a comprehensive appreciation of the capabilities of the framework.
+
+User Guide:
+https://github.com/ronbentley1/Arduino-REM_SYS-Asynchronous-Timed-Reminders/blob/master/REM_SYS%20User%20Guide%2C%20v1-00.pdf
+
 Have a look!
-
-
-
- 
