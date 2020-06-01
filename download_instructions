@@ -5,10 +5,10 @@ The files to be downloaded are held in two github branches - the "master" and a 
 On your local computer (Windows 10):
 
   1. Navigate to the github sub branch ("Code-branch") under the master branch and locate the .ino file called
-     something like "A00_Remsys_vX_XX revXX.ino".  
+     something like "A00_Remsys_vX_XX revXX.ino", or whatever tye latest version is.
      
   2. Now create a folder under the ARDUINO IDE directory on your pc with the same name as this first ARDUINO sketch 
-     tab, but WITHOUT the .ino extention (ie "A00_Remsys_vX_XX rev XX").
+     tab, but WITHOUT the .ino extention (ie "A00_Remsys_vX_XX revXX").
          
   3. From the github sub branch select all files for download using the download zip option.  
      When this is complete, unzip and move the files to the ARDUINO IDE folder you have just created.
