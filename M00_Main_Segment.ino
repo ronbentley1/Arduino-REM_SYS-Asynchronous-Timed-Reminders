@@ -46,7 +46,7 @@ void loop() {
 
         // default switch value 'catcher'
         default:
-          Serial.print("!Spurious switch value=");
+          Serial.print(F("!Spurious switch value="));
           Serial.println(R_subtype);
           Serial.flush();
           display_now_date_time();

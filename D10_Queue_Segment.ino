@@ -155,32 +155,32 @@ void print_RQ() {
     noInterrupts();
     count = num_RQ_reminders;
     ptr = start_of_RQ_chain;
-    Serial.println("_______________________________");
-    Serial.println("       REMINDER QUEUE");
-    Serial.print("          Num in RQ = ");
+    Serial.println(F("_______________________________"));
+    Serial.println(F("       REMINDER QUEUE"));
+    Serial.print(F("          Num in RQ = "));
     Serial.println(count);
-    Serial.print(" start of RQ chain = ");
+    Serial.print(F(" start of RQ chain = "));
     Serial.println(ptr);
-    Serial.print("   end of RQ chain = ");
+    Serial.print(F("   end of RQ chain = "));
     Serial.println(end_of_RQ_chain);
     if (count > 0) {
       do {
         for (i = 0; i < free_chain_entry_size; i++) {
-          Serial.print("RQ[");
+          Serial.print(F("RQ["));
           Serial.print(ptr);
-          Serial.print("]");
+          Serial.print(F("]"));
           Serial.print(i);
-          Serial.print("] = ");
+          Serial.print(F("] = "));
           Serial.println(RQ[ptr][i]);
         }
-        Serial.print("\n");
+        Serial.print(F("\n"));
         ptr = RQ[ptr][0]; //  look at next entry/block
         count --;
       }
       while ((ptr != end_of_chain_value) && (count > 0));
     }
-    Serial.println("");
-    Serial.println("_______________________________\n");
+    Serial.println(F(""));
+    Serial.println(F("_______________________________\n"));
     Serial.flush();
     interrupts();
   }
@@ -194,25 +194,25 @@ void print_free_chain() {
     noInterrupts();
     count = num_free_RQ_blocks;
     ptr = start_of_free_RQ_chain;
-    Serial.println("");
-    Serial.println("_______________________________");
-    Serial.println("         FREE CHAIN");
-    Serial.print("  Num in free chain = ");
+    Serial.println(F(""));
+    Serial.println(F("_______________________________"));
+    Serial.println(F("         FREE CHAIN"));
+    Serial.print(F("  Num in free chain = "));
     Serial.println(count);
-    Serial.print("start of free chain = ");
+    Serial.print(F("start of free chain = "));
     Serial.println(ptr);
     if (count > 0) {
       do {
-        Serial.print("RQ[");
+        Serial.print(F("RQ["));
         Serial.print(ptr);
-        Serial.print("][0] = ");
+        Serial.print(F("][0] = "));
         Serial.println(RQ[ptr][0]);
         ptr = RQ[ptr][0]; //  look at next entry/block
         count --;
       }
       while ((ptr != end_of_chain_value) && (count > 0));
     }
-    Serial.println("_______________________________\n");
+    Serial.println(F("_______________________________\n"));
     Serial.flush();
     interrupts();
   }

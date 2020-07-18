@@ -20,7 +20,7 @@ void setup()
     !rtc.begin();
     if (!rtc.isrunning())
     {
-      Serial.println("!setup() - RTC is not operating, terminating!");
+      Serial.println(F("!setup() - RTC is not operating, terminating!"));
       Serial.flush();
       exit(0);
     }
@@ -49,7 +49,7 @@ void setup()
                               0, 0, 0, 0,                     // not used
                               0, 0, 0, 0);                    // not used
   if (result < 0 && diags_on) {
-    Serial.print("setup() - error creating ETR for heart_beat, error value = ");
+    Serial.print(F("setup() - error creating ETR for heart_beat, error value = "));
     Serial.println(result);
     Serial.flush();
   }
@@ -60,7 +60,7 @@ void setup()
                               0, 0, 0,      // not used
                               0, 0, 0, 0);  // not used
   if (result < 0 && diags_on) {
-    Serial.print("setup() error creating RTR for midnight, error value = ");
+    Serial.print(F("setup() error creating RTR for midnight, error value = "));
     Serial.println(result);
     Serial.flush();
   }
@@ -68,6 +68,9 @@ void setup()
   //  insert all initial reminder ETR/RTR create remider requests here,
   //  before the timers and remind queues are initialised
   //  ******************************************************************
+
+
+
 
   //  ******************************************************************
   //  create free chain and initialise timers (0 or 2 and 1)

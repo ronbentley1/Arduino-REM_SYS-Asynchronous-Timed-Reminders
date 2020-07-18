@@ -66,7 +66,7 @@ void scan_R_list(int E_or_R) {
                              R_list[R_entry].R_user3,
                              R_list[R_entry].R_user4) == fail) {
             if (diags_on) {
-              Serial.println("\n!!scan_list ETR insert failure!!");
+              Serial.println(F("\n!!scan_list ETR insert failure!!"));
               Serial.flush();
             }
           }
@@ -117,7 +117,7 @@ void scan_R_list(int E_or_R) {
                              R_list[R_entry].R_user3,
                              R_list[R_entry].R_user4) == fail) {
             if (diags_on) {
-              Serial.println("\n!!scan_list RTR insert failure!!");
+              Serial.println(F("\n!!scan_list RTR insert failure!!"));
               Serial.flush();
             }
           }
@@ -144,7 +144,7 @@ int RTR_Processor() {
       return 1;                  // return that remind list was scanned this pass
     }
   } else  {
-    Serial.println("!RTR_processor - RTC not operating, terminating!");
+    Serial.println(F("!RTR_Processor - RTC not operating, terminating!"));
     Serial.flush();
     exit(0);
   }
@@ -434,39 +434,39 @@ void print_reminder(int R_entry) {
   long unsigned int R_remind_at, hrs, mins, secs;
   noInterrupts();
   if (R_list[R_entry].R_type != inactive) {
-    Serial.println("============ Reminder Parameters ================");
-    Serial.print("Reminder entry no: "); Serial.println(R_entry);
+    Serial.println(F("============ Reminder Parameters ================"));
+    Serial.print(F("Reminder entry no: ")); Serial.println(R_entry);
     R_type = R_list[R_entry].R_type;
-    Serial.print("R_type: "); Serial.print(R_type);
-    Serial.print("  R_subtype:  "); Serial.println(R_list[R_entry].R_subtype);
+    Serial.print(F("R_type: ")); Serial.print(R_type);
+    Serial.print(F("  R_subtype:  ")); Serial.println(R_list[R_entry].R_subtype);
     if (R_type >= ET_oneoff_type && R_type <= ET_repeat_duration_type) {
-      Serial.print("R_start_in: "); Serial.print(R_list[R_entry].R_start_in);
-      Serial.print(" ");
+      Serial.print(F("R_start_in: ")); Serial.print(R_list[R_entry].R_start_in);
+      Serial.print(F(" "));
     } else {
       R_remind_at = R_list[R_entry].R_remind_at;
       hrs = R_remind_at / 3600;
       secs = R_remind_at % 3600;
       mins = secs / 60;
       secs = secs % 60;
-      Serial.print("R_remind_at: ");
-      Serial.print(hrs); Serial.print(":");
-      Serial.print(mins); Serial.print(":");
-      Serial.print(secs); Serial.print(" (");
+      Serial.print(F("R_remind_at: "));
+      Serial.print(hrs); Serial.print(F(":"));
+      Serial.print(mins); Serial.print(F(":"));
+      Serial.print(secs); Serial.print(F(" ("));
       Serial.print(R_remind_at);
-      Serial.println(")" );
+      Serial.println(F(")" ));
     }
-    Serial.print("R_freq: "); Serial.print(R_list[R_entry].R_freq);
-    Serial.print(" R_duration: "); Serial.println(R_list[R_entry].R_duration);
-    Serial.print("R_count_down: "); Serial.println(R_list[R_entry].R_count_down);
-    Serial.println("============== User Parameters ==================");
-    Serial.print("R_user1: "); Serial.println(R_list[R_entry].R_user1);
-    Serial.print("R_user2: "); Serial.println(R_list[R_entry].R_user2);
-    Serial.print("R_user3: "); Serial.println(R_list[R_entry].R_user3);
-    Serial.print("R_user4: "); Serial.println(R_list[R_entry].R_user4);
+    Serial.print(F("R_freq: ")); Serial.print(R_list[R_entry].R_freq);
+    Serial.print(F(" R_duration: ")); Serial.println(R_list[R_entry].R_duration);
+    Serial.print(F("R_count_down: ")); Serial.println(R_list[R_entry].R_count_down);
+    Serial.println(F("============== User Parameters =================="));
+    Serial.print(F("R_user1: ")); Serial.println(R_list[R_entry].R_user1);
+    Serial.print(F("R_user2: ")); Serial.println(R_list[R_entry].R_user2);
+    Serial.print(F("R_user3: ")); Serial.println(R_list[R_entry].R_user3);
+    Serial.print(F("R_user4: ")); Serial.println(R_list[R_entry].R_user4);
   } else {
-    Serial.print("\n\n** Reminder ");
+    Serial.print(F("\n\n** Reminder "));
     Serial.print(R_entry);
-    Serial.println(" is inactive **");
+    Serial.println(F(" is inactive **"));
   }
   Serial.flush();
   interrupts();

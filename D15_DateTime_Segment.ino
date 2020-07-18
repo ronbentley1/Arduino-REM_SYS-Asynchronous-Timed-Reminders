@@ -191,17 +191,17 @@ RTC_DS1307 rtc;
 void display_now_date_time() {
   DateTime now = rtc.now();
   Serial.print(now.day());
-  Serial.print('/');
+  Serial.print(F("/"));
   Serial.print(now.month());
-  Serial.print('/');
+  Serial.print(F("/"));
   Serial.print(now.year());
-  Serial.print(", ");
+  Serial.print(F(", "));
   Serial.print(days_of_week[now.dayOfTheWeek()]);
-  Serial.print(", ");
+  Serial.print(F(", "));
   Serial.print(now.hour());
-  Serial.print(':');
+  Serial.print(F(":"));
   Serial.print(now.minute());
-  Serial.print(':');
+  Serial.print(F(":"));
   Serial.println(now.second());
   Serial.flush();
 }
@@ -217,7 +217,7 @@ long unsigned int seconds_since_midnight() {
     secs = now.second();
     return hrs * 3600 + mins * 60 + secs;
   }  else  {
-    Serial.println("!secs_since_mid - RTC is not operating, terminating!");
+    Serial.println(F("!secs_since_midnight - RTC is not operating, terminating!"));
     Serial.flush();
     exit(0);
   }
