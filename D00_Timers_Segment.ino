@@ -8,7 +8,7 @@
 //
 // Note that the timer frequency for RTR processing is fixed (timer1).
 // However, the frequency for processing ETRs is end user configurable (see User Guide).
-//
+// 
 // **************************************************************************************
 // timer initialisation routines for timer0, timer1 and timer2:
 //

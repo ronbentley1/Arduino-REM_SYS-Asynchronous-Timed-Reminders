@@ -1,7 +1,7 @@
 /*   version 1.00 rev 1, Ron D Bentley (Stafford UK) March 2020.
  *   version 1.00 rev 2, July 2020 - moved print strings to program storage space to reduce
- *                                   amount of dynamic storage used.
-
+ *                                   amount of dynamic storage used. Plus improved efficiency in 
+ *                                   heart beat coding.
 This framework provides a basis for the development of applications that would benefit from timed 
 reminder alerting.  Timed reminder alerts can be defined/created as elapsed time reminders (ETRs)or
 as real-time reminders (RTRs) linked to a real-time clock (RTC).  Any number of reminders can be 

@@ -29,11 +29,7 @@ void loop() {
           //  ********** provides a visual indication that the program is running
           analogWrite(heart_beat_pin, hb_intensity);
           // toggle heart beat output level for next pass
-          if (hb_intensity == 255) {
-            hb_intensity = 0;
-          } else {
-            hb_intensity = 255;
-          }
+          hb_intensity = 255 - hb_intensity;  // produces 0 and 255 on alternate passes
           break;
         case midnight:
           // ********* midnight processing. Insert any code relevant for daily housekeeping
