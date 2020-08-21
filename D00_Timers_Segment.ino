@@ -100,6 +100,7 @@ ISR(TIMER0_COMPA_vect) {
 //  Timer1 is used as the timing source for RTR processing exclusively.
 //  Timer1 is initialised for 2 cycles per second (2hz) so is entered
 //  every 1/2 second.
+//  Note that this routne is only active if the RTC is enabled
 //
 ISR(TIMER1_COMPA_vect) {
   if (!reminders_suspended)
@@ -132,11 +133,12 @@ ISR(TIMER2_COMPA_vect) {
 
 // The framework supports one of two timers for processing ETRs, either timer0 or timer2.
 // Both timers are initialised for 1khz (1000 cycles per second, or ETR_timer_freq).
-// If end user wishes to use delay() function, choose to initialise timer2 not timer0.
+// If end user wishes to use delay() function, choose to initialise timer2 NOT timer0.
+//
 void initialise_timers() {
   if (ETR_timer_number == 0) initialise_timer0();
   else initialise_timer2();
-  initialise_timer1();
+  if (RTC_enabled) {initialise_timer1();} // timer1 deals with the RTC
 }
 
 //

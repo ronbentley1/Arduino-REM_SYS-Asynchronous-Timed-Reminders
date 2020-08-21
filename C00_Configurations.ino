@@ -5,6 +5,8 @@
 //
 #define diags_on                        true  // leave set to true whilst developing/testing
 
+#define RTC_enabled                     true  // Real-time clock enabled if true, false, if not
+
 int ETR_timer_number                   = 0;   // 0 for timer0, 2 for timer2
 
 #define ETR_R_list_scan_freq            100   //time (msecs) between scans of the ETR list (see User Guide)
@@ -75,6 +77,7 @@ volatile boolean reminders_suspended = true;  //  allows reminder list scans to 
 #define invalid_RT_mins           -15  // ...
 #define invalid_RT_secs           -16  // ...
 #define reminder_list_full        -99
+#define RTC_not_configured        -100
 
 volatile struct Reminder_List {
   // Reminder List variables for managing reminder entries

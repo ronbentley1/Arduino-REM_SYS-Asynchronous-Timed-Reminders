@@ -17,20 +17,24 @@ void setup()
   int result;
   if (diags_on) {
     Serial.begin(115200);
-    !rtc.begin();
-    if (!rtc.isrunning())
-    {
-      Serial.println(F("!setup() - RTC is not operating, terminating!"));
-      Serial.flush();
-      exit(0);
+    if (RTC_enabled) {
+      !rtc.begin();
+      if (!rtc.isrunning())
+      {
+        Serial.println(F("!setup() - RTC is not operating, terminating!"));
+        Serial.flush();
+        exit(0);
+      }
     }
   }
-  //  Set up 'today_day_number' to provide ready access to this value at any point
-  //  in the program without the need for it to be recalculated.
-  //  This will get incremented each midnight to stay in step with the current date.
-  DateTime now = rtc.now();
-  today_day_number = day_number(now.day(), now.month(), now.year());
-  today_day_of_week = (today_day_number + day_of_week_offset) % 7; // map to 0 (Sunday), 1 (Monday),.., 6 (Saturday)
+  if (RTC_enabled) {
+    //  Set up 'today_day_number' to provide ready access to this value at any point
+    //  in the program without the need for it to be recalculated.
+    //  This will get incremented each midnight to stay in step with the current date.
+    DateTime now = rtc.now();
+    today_day_number = day_number(now.day(), now.month(), now.year());
+    today_day_of_week = (today_day_number + day_of_week_offset) % 7; // map to 0 (Sunday), 1 (Monday),.., 6 (Saturday)
+  }
   // **********************************************************************************
   // set up the two standing reminders:
   //  1.  the heart beat visual monitor as an ETR, to show processes are operating, and
@@ -53,23 +57,34 @@ void setup()
     Serial.println(result);
     Serial.flush();
   }
-  //  set up RTR for each midnight, so that any daily processing can be performed
-  result = create_RT_reminder(RT_recurring_type, midnight,
-                              0, 0, 0,      // start at midnight (00:00:00)
-                             24, 0, 0,      // repeat each midnight (24 hrs)
-                              0, 0, 0,      // not used
-                              0, 0, 0, 0);  // not used
-  if (result < 0 && diags_on) {
-    Serial.print(F("setup() error creating RTR for midnight, error value = "));
-    Serial.println(result);
-    Serial.flush();
+  if (RTC_enabled) {
+    //  set up RTR for each midnight, so that any daily processing can be performed
+    result = create_RT_reminder(RT_recurring_type, midnight,
+                                0, 0, 0,      // start at midnight (00:00:00)
+                                24, 0, 0,      // repeat each midnight (24 hrs)
+                                0, 0, 0,      // not used
+                                0, 0, 0, 0);  // not used
+    if (result < 0 && diags_on) {
+      Serial.print(F("setup() error creating RTR for midnight, error value = "));
+      Serial.println(result);
+      Serial.flush();
+    }
   }
   //  ******************************************************************
   //  insert all initial reminder ETR/RTR create remider requests here,
   //  before the timers and remind queues are initialised
   //  ******************************************************************
 
-
+  result = create_ET_reminder(ET_recurring_type, 1,
+                              0, 0, 0, 0,                     // start immediately
+                              0, 0, 1, 0,  
+                              0, 0, 0, 0,                     // not used
+                              0, 0, 0, 0);                    // not used
+  if (result < 0 && diags_on) {
+    Serial.print(F("setup() - error creating ETR for heart_beat, error value = "));
+    Serial.println(result);
+    Serial.flush();
+  }
 
 
   //  ******************************************************************

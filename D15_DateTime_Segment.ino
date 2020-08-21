@@ -189,36 +189,40 @@ int day_of_week(int day, int month, int year) {
 RTC_DS1307 rtc;
 
 void display_now_date_time() {
-  DateTime now = rtc.now();
-  Serial.print(now.day());
-  Serial.print(F("/"));
-  Serial.print(now.month());
-  Serial.print(F("/"));
-  Serial.print(now.year());
-  Serial.print(F(", "));
-  Serial.print(days_of_week[now.dayOfTheWeek()]);
-  Serial.print(F(", "));
-  Serial.print(now.hour());
-  Serial.print(F(":"));
-  Serial.print(now.minute());
-  Serial.print(F(":"));
-  Serial.println(now.second());
-  Serial.flush();
+  if (RTC_enabled) {
+    DateTime now = rtc.now();
+    Serial.print(now.day());
+    Serial.print(F("/"));
+    Serial.print(now.month());
+    Serial.print(F("/"));
+    Serial.print(now.year());
+    Serial.print(F(", "));
+    Serial.print(days_of_week[now.dayOfTheWeek()]);
+    Serial.print(F(", "));
+    Serial.print(now.hour());
+    Serial.print(F(":"));
+    Serial.print(now.minute());
+    Serial.print(F(":"));
+    Serial.println(now.second());
+    Serial.flush();
+  }
 }
 
 //
 // Function returns the number of seconds since midnight.
 long unsigned int seconds_since_midnight() {
   long unsigned int secs, mins, hrs;
-  if (rtc.isrunning()) {
-    DateTime now = rtc.now();
-    hrs  = now.hour();
-    mins = now.minute();
-    secs = now.second();
-    return hrs * 3600 + mins * 60 + secs;
-  }  else  {
-    Serial.println(F("!secs_since_midnight - RTC is not operating, terminating!"));
-    Serial.flush();
-    exit(0);
-  }
+  if (RTC_enabled) {
+    if (rtc.isrunning()) {
+      DateTime now = rtc.now();
+      hrs  = now.hour();
+      mins = now.minute();
+      secs = now.second();
+      return hrs * 3600 + mins * 60 + secs;
+    }  else  {
+      Serial.println(F("!secs_since_midnight - RTC is not operating, terminating!"));
+      Serial.flush();
+      exit(0);
+    }
+  } else return 0; // RTC not configured
 }

@@ -33,13 +33,17 @@ void loop() {
           break;
         case midnight:
           // ********* midnight processing. Insert any code relevant for daily housekeeping
+          //           Note, this is only entered if the RTC is configured.
           today_day_number++;                              // day_number for today, a new day
           today_day_of_week = (today_day_of_week + 1) % 7; // next day of week value
           break;
         // **********************************************************
         // insert ETR/RTR alert switch case code handling here:
-
-
+case 1:
+display_now_date_time();
+seconds_since_midnight();
+Serial.println("ETR...elapsed, sub_type=1");
+break;
         // default switch value 'catcher'
         default:
           Serial.print(F("!Spurious switch value="));
