@@ -21,6 +21,6 @@ In addition to functions to create each type of reminder, the framework also pro
 
 The REM_SYS User Guide provides a comprehensive appreciation of the capabilities of the framework.
 
-User Guide:https://github.com/ronbentley1/Arduino-REM_SYS-Asynchronous-Timed-Reminders/blob/master/REM_SYS%20User%20Guide%2C%20v1-00%2C%20rev%202.pdf
+User Guide:https://github.com/ronbentley1/Arduino-REM_SYS-Asynchronous-Timed-Reminders/blob/master/REM_SYS%20User%20Guide%2C%20v2-00.pdf
 
 Have a look!
