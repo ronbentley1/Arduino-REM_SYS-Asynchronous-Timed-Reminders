@@ -26,7 +26,7 @@ void loop() {
       //  *******************************************************************************
       switch (R_subtype) {
         case heart_beat:
-          //  ********** provides a visual indication that the program is running
+          //  ******** provides a visual indication that the program is running
           analogWrite(heart_beat_pin, hb_intensity);
           // toggle heart beat output level for next pass
           hb_intensity = 255 - hb_intensity;  // produces 0 and 255 on alternate passes
@@ -37,13 +37,17 @@ void loop() {
           today_day_number++;                              // day_number for today, a new day
           today_day_of_week = (today_day_of_week + 1) % 7; // next day of week value
           break;
-        // **********************************************************
-        // insert ETR/RTR alert switch case code handling here:
-case 1:
-display_now_date_time();
-seconds_since_midnight();
-Serial.println("ETR...elapsed, sub_type=1");
-break;
+        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        // M00_Main_Segment [ALERT PROCESSING], timer alert processing - 
+        // Insert ETR/RTR alert switch case code handling here:
+        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
         // default switch value 'catcher'
         default:
           Serial.print(F("!Spurious switch value="));
@@ -53,10 +57,16 @@ break;
           break;
       }
     } else {
-      //  ***************************************************************
-      //  Reminder queue is currently empty, so do other things..
+      //  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      //  M00_Main_Segment [GENERAL PROCESSING]. 
+      //  Reminder queue is currently empty, so do other things.
       //  Insert end user code here for processing non-reminder alerts
-      //  ***************************************************************
+      //  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
 
     }
   } while (true);

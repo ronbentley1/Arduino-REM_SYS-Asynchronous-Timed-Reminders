@@ -7,9 +7,16 @@
 //      carried out as necessary ech midnight.a
 //
 int hb_intensity                = 255; // start by setting to max output level
-#define heart_beat_pin             13  // digital pin for visible heart beat
+#define heart_beat_pin    LED_BUILTIN  // digital pin for visible heart beat
 #define heart_beat                254  // ETR reminder sub_type for heart beat
 #define midnight                  255  // RTR reminder sub_type for midnight processing
+
+//  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//  H00_Setup [DECLARE] - insert any additional declaration requirements here.
+//  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 //
 void setup()
@@ -70,21 +77,12 @@ void setup()
       Serial.flush();
     }
   }
-  //  ******************************************************************
-  //  insert all initial reminder ETR/RTR create remider requests here,
-  //  before the timers and remind queues are initialised
-  //  ******************************************************************
+  //  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  //  H00_Setup [INITIALISE] - insert any additional initialisation
+  //  requirements here, but before the timers and remind queues are initialised
+  //  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  result = create_ET_reminder(ET_recurring_type, 1,
-                              0, 0, 0, 0,                     // start immediately
-                              0, 0, 1, 0,  
-                              0, 0, 0, 0,                     // not used
-                              0, 0, 0, 0);                    // not used
-  if (result < 0 && diags_on) {
-    Serial.print(F("setup() - error creating ETR for heart_beat, error value = "));
-    Serial.println(result);
-    Serial.flush();
-  }
+
 
 
   //  ******************************************************************
